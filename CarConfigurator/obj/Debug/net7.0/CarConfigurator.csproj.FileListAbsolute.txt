@@ -1,0 +1,15 @@
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\bin\Debug\net7.0\CarConfigurator.exe
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\bin\Debug\net7.0\CarConfigurator.deps.json
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\bin\Debug\net7.0\CarConfigurator.runtimeconfig.json
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\bin\Debug\net7.0\CarConfigurator.dll
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\bin\Debug\net7.0\CarConfigurator.pdb
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\obj\Debug\net7.0\CarConfigurator.csproj.AssemblyReference.cache
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\obj\Debug\net7.0\CarConfigurator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\obj\Debug\net7.0\CarConfigurator.AssemblyInfoInputs.cache
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\obj\Debug\net7.0\CarConfigurator.AssemblyInfo.cs
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\obj\Debug\net7.0\CarConfigurator.csproj.CoreCompileInputs.cache
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\obj\Debug\net7.0\CarConfigurator.dll
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\obj\Debug\net7.0\refint\CarConfigurator.dll
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\obj\Debug\net7.0\CarConfigurator.pdb
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\obj\Debug\net7.0\CarConfigurator.genruntimeconfig.cache
+C:\Users\Tomek\source\repos\CarConfigurator\CarConfigurator\obj\Debug\net7.0\ref\CarConfigurator.dll
