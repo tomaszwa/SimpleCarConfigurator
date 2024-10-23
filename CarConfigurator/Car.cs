@@ -9,7 +9,7 @@ namespace CarConfigurator
 {
     public class Car
     {
-        public string CarBuild(int chasis, int engine, int transmision, int interiorColour, int paintColour, int equipmentPack)
+        public string CarBuild(int chasis, int engine, int transmision, int interiorColour, int paintColour, int equipmentPack, decimal price)
         {
             string[] chasisArray = new string[] { "Sedan", "Wagon", "Hatchback" };
             string[] engineArray = new string[] { "Petrol 1.8 MPI 140HP", "Petrol 2.5 Turbo 258HP", "Diesel 2.0 TurboD 172HP", "Hybrid 1.6 MPI + Electric engine 210HP(combined)" };
@@ -24,7 +24,8 @@ namespace CarConfigurator
                 $"Transmission: {transmisionArray[transmision-1]}\n" +
                 $"Interior: {interiorArray[interiorColour-1]}\n" +
                 $"Paint: {paintArray[paintColour-1]}\n" +
-                $"EquipmentPack: {equipmentArray[equipmentPack-1]}";
+                $"EquipmentPack: {equipmentArray[equipmentPack-1]}\n" +
+                $"Final price: {price}EUR";
 
             return finalBuild;
 
