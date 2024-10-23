@@ -25,7 +25,7 @@ namespace CarConfigurator
                 $"Interior: {interiorArray[interiorColour-1]}\n" +
                 $"Paint: {paintArray[paintColour-1]}\n" +
                 $"EquipmentPack: {equipmentArray[equipmentPack-1]}\n" +
-                $"Final price: {price}EUR";
+                $"Final price: {price}EUR\n";
 
             return finalBuild;
 
