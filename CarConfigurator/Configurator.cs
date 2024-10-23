@@ -59,15 +59,13 @@ namespace CarConfigurator
             Console.WriteLine("Available engines:");
             foreach (CarElement element in Engines)
                 Console.WriteLine($"{element.Id}. {element.Name} {element.Price}EUR");
-            string input = Console.ReadLine();
-            Int32.TryParse(input, out int engine);
+            int engine = InputHandler.GetValidIntInput(1, 4);
             price += Engines.FirstOrDefault(x => x.Id == engine).Price;
 
             Console.WriteLine("Available transmissions:");
             foreach (CarElement element in Transmissions)
                 Console.WriteLine($"{element.Id}. {element.Name} {element.Price}EUR");
-            string input2 = Console.ReadLine();
-            Int32.TryParse(input2, out int transmission);
+            int transmission = InputHandler.GetValidIntInput(1, 3);
             price += Transmissions.FirstOrDefault(x => x.Id == transmission).Price;
 
             if (engine != 4 && transmission == 3)
@@ -79,22 +77,19 @@ namespace CarConfigurator
             Console.WriteLine("Available interiors:");
             foreach (CarElement element in Interiors)
                 Console.WriteLine($"{element.Id}. {element.Name} {element.Price}EUR");
-            string input3 = Console.ReadLine();
-            Int32.TryParse(input3, out int interior);
+            int interior = InputHandler.GetValidIntInput(1, 4);
             price += Interiors.FirstOrDefault(x => x.Id == interior).Price;
 
             Console.WriteLine("Available paints:");
             foreach (CarElement element in Paints)
                 Console.WriteLine($"{element.Id}. {element.Name} {element.Price}EUR");
-            string input4 = Console.ReadLine();
-            Int32.TryParse(input4, out int paint);
+            int paint = InputHandler.GetValidIntInput(1, 6);
             price += Paints.FirstOrDefault(x => x.Id == paint).Price;
 
             Console.WriteLine("Available equipment packages:");
             foreach (CarElement element in EquipmentPackages)
                 Console.WriteLine($"{element.Id}. {element.Name} {element.Price}EUR");
-            string input5 = Console.ReadLine();
-            Int32.TryParse(input5, out int pack);
+            int pack = InputHandler.GetValidIntInput(1, 4);
             price += EquipmentPackages.FirstOrDefault(x => x.Id == pack).Price;
 
             var finalCarBuild = Car.CarBuild(chasis, engine, transmission, interior, paint, pack, price);
@@ -102,8 +97,7 @@ namespace CarConfigurator
 
             Console.WriteLine("1. Send information to dealer\n" +
             "2. Exit\n");
-            string input6 = Console.ReadLine();
-            Int32.TryParse(input6, out int sendToDealer);
+            int sendToDealer = InputHandler.GetValidIntInput(1, 2);
 
             switch (sendToDealer)
             {

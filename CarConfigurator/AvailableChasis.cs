@@ -45,30 +45,26 @@ namespace CarConfigurator
             Console.WriteLine("   \\_/           \\_/     ");
 
 
-            string input = Console.ReadLine();
             int chasis = 0;
-            bool convert = Int32.TryParse(input, out int choice);
-            if (convert)
+            int choice = InputHandler.GetValidIntInput(1, 3);
+            switch (choice)
             {
-                switch (choice)
-                {
-                    case 1:
-                        Console.WriteLine("You've picked sedan");
-                        chasis = 1;
-                        break;
-                    case 2:
-                        Console.WriteLine("You've picked wagon");
-                        chasis = 2;
-                        break;
-                    case 3:
-                        Console.WriteLine("You've picked hatchback");
-                        chasis = 3;
-                        break;
-                    default:
-                        chasis = 0;
-                        Console.WriteLine("Invalid choice try again");
-                        break;
-                }
+                case 1:
+                    Console.WriteLine("You've picked sedan");
+                    chasis = 1;
+                    break;
+                case 2:
+                    Console.WriteLine("You've picked wagon");
+                    chasis = 2;
+                    break;
+                case 3:
+                    Console.WriteLine("You've picked hatchback");
+                    chasis = 3;
+                    break;
+                default:
+                    chasis = 0;
+                    Console.WriteLine("Invalid choice try again");
+                    break;
             }
             return chasis;
         }
