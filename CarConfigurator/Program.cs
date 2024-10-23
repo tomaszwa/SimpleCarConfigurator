@@ -18,8 +18,7 @@ namespace CarConfigurator
                     "1. Configure\n" +
                     "2. Dimensions\n" +
                     "0. Return\n");
-                string input2 = Console.ReadLine();
-                bool option = Int32.TryParse(input2, out int optionChosen);
+                int optionChosen = InputHandler.GetValidIntInput(0, 2);
 
                 switch (optionChosen)
                 {
