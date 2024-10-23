@@ -97,10 +97,38 @@ namespace CarConfigurator
             Int32.TryParse(input5, out int pack);
             price += EquipmentPackages.FirstOrDefault(x => x.Id == pack).Price;
 
-            Console.WriteLine(Car.CarBuild(chasis, engine, transmission, interior, paint, pack, price));
-            Console.ReadLine();
+            var finalCarBuild = Car.CarBuild(chasis, engine, transmission, interior, paint, pack, price);
+            Console.WriteLine(finalCarBuild);
+
+            Console.WriteLine("1. Send information to dealer\n" +
+            "2. Exit\n");
+            string input6 = Console.ReadLine();
+            Int32.TryParse(input6, out int sendToDealer);
+
+            switch (sendToDealer)
+            {
+                case 1:
+                    SendToDealer(finalCarBuild);
+                    break;
+                case 2:
+                    return true;
+                default:
+                    break;
+            }
+
 
             return true;
+        }
+
+        private void SendToDealer(string finalCarBuild)
+        {
+            var actualDate = DateTime.Now;
+            Console.WriteLine($"Dates available to meet with dealer:\n" +
+                $"{actualDate.AddDays(1).ToString("dd-MM-yyyy")} - 10:00, 12:00, 14:00, 16:00\n" +
+                $"{actualDate.AddDays(2).ToString("dd-MM-yyyy")} - 10:00, 12:00, 14:00, 16:00\n" +
+                $"{actualDate.AddDays(3).ToString("dd-MM-yyyy")} - 10:00, 12:00, 14:00, 16:00\n" +
+                $"Press anything to continue...");
+            Console.ReadLine();
         }
     }
 
