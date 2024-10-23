@@ -1,67 +1,114 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace CarConfigurator
 {
     public class Configurator
     {
+        private readonly List<CarElement> Engines = new List<CarElement>
+        {
+            new CarElement { Id = 1, Name = "Petrol 1.8 MPI 140HP", Price = 62000 },
+            new CarElement { Id = 2, Name = "Petrol 2.5 Turbo 258HP", Price = 72000 },
+            new CarElement { Id = 3, Name = "Diesel 2.0 TurboD 172HP", Price = 60500 },
+            new CarElement { Id = 4, Name = "Hybrid 1.6 MPI + Electric engine 210HP(combined)", Price = 68000 }
+        };
+
+        private readonly List<CarElement> Transmissions = new List<CarElement>
+        {
+            new CarElement { Id = 1, Name = "Manual 6 speed", Price = 0 },
+            new CarElement { Id = 2, Name = "DualClutch Automatic 8 speed", Price = 2000 },
+            new CarElement { Id = 3, Name = "CVT(only hybrid)", Price = 0 }
+        };
+
+        private readonly List<CarElement> Interiors = new List<CarElement>
+        {
+            new CarElement { Id = 1, Name = "Black leather", Price = 1500 },
+            new CarElement { Id = 2, Name = "Carmel leather", Price = 2000 },
+            new CarElement { Id = 3, Name = "Grey fabric", Price = 0 },
+            new CarElement { Id = 4, Name = "Handmade alcantara + black leather", Price = 3500 }
+        };
+
+        private readonly List<CarElement> Paints = new List<CarElement>
+        {
+            new CarElement { Id = 1, Name = "Midnight Black", Price = 0 },
+            new CarElement { Id = 2, Name = "Arctic White", Price = 0 },
+            new CarElement { Id = 3, Name = "Magnetic Silver", Price = 0 },
+            new CarElement { Id = 4, Name = "Candy Red", Price = 2000 },
+            new CarElement { Id = 5, Name = "Sating Grey", Price = 3500 },
+            new CarElement { Id = 6, Name = "Electric Orange", Price = 4000 }
+        };
+
+        private readonly List<CarElement> EquipmentPackages = new List<CarElement>
+        {
+            new CarElement { Id = 1, Name = "Standard (6.5' inch multimedia screen, heated seats, 2-zone climate control)", Price = 0 },
+            new CarElement { Id = 2, Name = "PackPlus (8' inch multimedia screen, heated and ventilated seats, 3-zone climate control)", Price = 200 },
+            new CarElement { Id = 3, Name = "SportPack (8' inch multimedia screen, heated and ventilated seats, 3-zone climate control, black wheels 19' inch alloy wheels, black splitters)", Price = 1100 },
+            new CarElement { Id = 4, Name = "MaxPack (8 inch multimedia screen, heated and ventilated seats, 4-zone climate control, gunpowder grey 20' inch alloy wheels, 360 camera system, active cruise control)", Price = 2400 }
+        };
+
         public bool Specing(int chasis)
         {
             Car Car = new Car();
-            Console.WriteLine($"Available engine:\n" +
-                $"1. Petrol 1.8 MPI 140HP 62000EUR\n" +
-                $"2. Petrol 2.5 Turbo 258HP 72000EUR\n" +
-                $"3. Diesel 2.0 TurboD 172HP 60500EUR\n" +
-                $"4. Hybrid 1.6 MPI + Electric engine 210HP(combined) 68000EUR");
-            string input =Console.ReadLine();
-            Int32.TryParse(input, out int engine);
+            decimal price = decimal.Zero;
 
-            Console.WriteLine($"Available transmision:\n" +
-                $"1. Manual 6 speed +0EUR\n" +
-                $"2. DualClutch Automatic 8 speed +2000EUR\n" +
-                $"3. CVT(only hybrid) +0EUR");
+            Console.WriteLine("Available engines:");
+            foreach (CarElement element in Engines)
+                Console.WriteLine($"{element.Id}. {element.Name} {element.Price}EUR");
+            string input = Console.ReadLine();
+            Int32.TryParse(input, out int engine);
+            price += Engines.FirstOrDefault(x => x.Id == engine).Price;
+
+            Console.WriteLine("Available transmissions:");
+            foreach (CarElement element in Transmissions)
+                Console.WriteLine($"{element.Id}. {element.Name} {element.Price}EUR");
             string input2 = Console.ReadLine();
             Int32.TryParse(input2, out int transmission);
-            if(engine != 4 && transmission == 3)
+            price += Transmissions.FirstOrDefault(x => x.Id == transmission).Price;
+
+            if (engine != 4 && transmission == 3)
             {
                 Console.WriteLine("Wrong option, start again");
                 return false;
             }
 
-            Console.WriteLine($"Available interiors:\n" +
-                $"1. Black leather +1500EUR\n" +
-                $"2. Carmel leather +2000EUR\n" +
-                $"3. Grey fabric +0EUR\n" +
-                $"4. Handmade alcantara + black leather +3500EUR\n");
+            Console.WriteLine("Available interiors:");
+            foreach (CarElement element in Interiors)
+                Console.WriteLine($"{element.Id}. {element.Name} {element.Price}EUR");
             string input3 = Console.ReadLine();
             Int32.TryParse(input3, out int interior);
+            price += Interiors.FirstOrDefault(x => x.Id == interior).Price;
 
-            Console.WriteLine($"Available paints:\n" +
-                $"1. Midnight Black +0EUR\n" +
-                $"2. Arctic White +0EUR\n" +
-                $"3. Magnetic Silver +0EUR\n" +
-                $"4. Candy Red +2000EUR\n" +
-                $"5. Sating Grey +3500EUR\n" +
-                $"6. Electric Orange +4000EUR");
-            string input4 = Console.ReadLine(); 
+            Console.WriteLine("Available paints:");
+            foreach (CarElement element in Paints)
+                Console.WriteLine($"{element.Id}. {element.Name} {element.Price}EUR");
+            string input4 = Console.ReadLine();
             Int32.TryParse(input4, out int paint);
+            price += Paints.FirstOrDefault(x => x.Id == paint).Price;
 
-            Console.WriteLine($"Avaialable equipment packages:\n" +
-                $"1. Standard(6.5' inch multimedia screen, heated seats, 2-zone climate control +0EUR\n" +
-                $"2. PackPlus(8' inch multimedia screen, heated and ventilated seats, 3-zone climate control +200EUR\n" +
-                $"3. SportPack(8' inch multimedia screen, heated and ventilated seats, 3-zone climate control, black wheels 19' inch alloy wheels, black splitters +1100EUR \n" +
-                $"4. MaxPack(8 inch multimedia screen, heated and ventilated seats, 4-zone climate control, gunpowder grey 20' inch alloy wheels, 360 camera system, active cruise control + 2400EUR");
+            Console.WriteLine("Available equipment packages:");
+            foreach (CarElement element in EquipmentPackages)
+                Console.WriteLine($"{element.Id}. {element.Name} {element.Price}EUR");
             string input5 = Console.ReadLine();
             Int32.TryParse(input5, out int pack);
+            price += EquipmentPackages.FirstOrDefault(x => x.Id == pack).Price;
 
-            Console.WriteLine(Car.CarBuild(chasis, engine, transmission, interior, paint, pack));
+            Console.WriteLine(Car.CarBuild(chasis, engine, transmission, interior, paint, pack, price));
+            Console.ReadLine();
 
             return true;
-
-            
         }
     }
+
+    public class CarElement
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+    }
+
 }
